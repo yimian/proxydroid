@@ -124,6 +124,7 @@ public class ProxyDroid extends PreferenceActivity
     private CheckBoxPreference isAuthCheck;
     private CheckBoxPreference isNTLMCheck;
     private CheckBoxPreference isPACCheck;
+    private CheckBoxPreference isCharlesProxyCheck;
     private ListPreference profileList;
     private EditTextPreference hostText;
     private EditTextPreference portText;
@@ -356,6 +357,7 @@ public class ProxyDroid extends PreferenceActivity
         isNTLMCheck = (CheckBoxPreference) findPreference("isNTLM");
         isPACCheck = (CheckBoxPreference) findPreference("isPAC");
         isAutoConnectCheck = (CheckBoxPreference) findPreference("isAutoConnect");
+        isCharlesProxyCheck = (CheckBoxPreference) findPreference("isCharlesProxy");
         isBypassAppsCheck = (CheckBoxPreference) findPreference("isBypassApps");
 
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -473,6 +475,7 @@ public class ProxyDroid extends PreferenceActivity
 
             bundle.putString("proxyType", mProfile.getProxyType());
             bundle.putBoolean("isAutoSetProxy", mProfile.isAutoSetProxy());
+            bundle.putBoolean("isCharlesProxy", mProfile.isCharlesProxy());
             bundle.putBoolean("isBypassApps", mProfile.isBypassApps());
             bundle.putBoolean("isAuth", mProfile.isAuth());
             bundle.putBoolean("isNTLM", mProfile.isNTLM());
@@ -521,6 +524,7 @@ public class ProxyDroid extends PreferenceActivity
         isAuthCheck.setChecked(mProfile.isAuth());
         isNTLMCheck.setChecked(mProfile.isNTLM());
         isAutoConnectCheck.setChecked(mProfile.isAutoConnect());
+        isCharlesProxyCheck.setChecked(mProfile.isCharlesProxy());
         isAutoSetProxyCheck.setChecked(mProfile.isAutoSetProxy());
         isBypassAppsCheck.setChecked(mProfile.isBypassApps());
         isPACCheck.setChecked(mProfile.isPAC());
@@ -566,6 +570,7 @@ public class ProxyDroid extends PreferenceActivity
         isNTLMCheck.setEnabled(false);
         isAutoSetProxyCheck.setEnabled(false);
         isAutoConnectCheck.setEnabled(false);
+        isCharlesProxyCheck.setEnabled(false);
         isPACCheck.setEnabled(false);
         isBypassAppsCheck.setEnabled(false);
     }
@@ -602,6 +607,7 @@ public class ProxyDroid extends PreferenceActivity
         isAutoSetProxyCheck.setEnabled(true);
         isAuthCheck.setEnabled(true);
         isAutoConnectCheck.setEnabled(true);
+        isCharlesProxyCheck.setEnabled(true);
         isPACCheck.setEnabled(true);
     }
 

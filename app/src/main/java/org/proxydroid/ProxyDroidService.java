@@ -69,7 +69,6 @@ import com.btr.proxy.selector.pac.UrlPacScriptSource;
 
 import org.proxydroid.utils.Utils;
 
-import java.io.FileOutputStream;
 import java.lang.ref.WeakReference;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -94,6 +93,7 @@ public class ProxyDroidService extends Service {
 
     final static String CMD_IPTABLES_RETURN = "iptables -t nat -A OUTPUT -p tcp -d 0.0.0.0 -j RETURN\n";
 
+    // 5228 port is used by the Google Playstore
     final static String CMD_IPTABLES_REDIRECT_ADD_HTTP = "iptables -t nat -A OUTPUT -p tcp --dport 80 -j REDIRECT --to 8123\n"
             + "iptables -t nat -A OUTPUT -p tcp --dport 443 -j REDIRECT --to 8124\n"
             + "iptables -t nat -A OUTPUT -p tcp --dport 5228 -j REDIRECT --to 8124\n";
@@ -135,6 +135,7 @@ public class ProxyDroidService extends Service {
 
     private boolean hasRedirectSupport = true;
     private boolean isAutoSetProxy = false;
+    private boolean isCharlesProxy = false;
     private boolean isBypassApps = false;
 
     private ProxyedApp[] apps;
@@ -180,7 +181,7 @@ public class ProxyDroidService extends Service {
         int proxyPort = port;
 
         try {
-            if ("https".equals(proxyType)) {
+            if ("https".equals(proxyType) && !isCharlesProxy) {
                 String src = "-L=http://127.0.0.1:8126";
                 String auth = "";
                 if (!user.isEmpty() && !password.isEmpty()) {
@@ -206,6 +207,9 @@ public class ProxyDroidService extends Service {
                 final String u = Utils.preserve(user);
                 final String p = Utils.preserve(password);
 
+                if(isCharlesProxy) {
+                    proxyType = "http";  // proxy.sh use http logic to generate redsocks.conf
+                }
                 Utils.runRootCommand(basePath + "proxy.sh " + basePath + " start" + " " + proxyType + " " + proxyHost
                         + " " + proxyPort + " " + auth + " \"" + u + "\" \"" + p + "\"");
             }
@@ -563,6 +567,7 @@ public class ProxyDroidService extends Service {
         proxyType = bundle.getString("proxyType");
         port = bundle.getInt("port");
         isAutoSetProxy = bundle.getBoolean("isAutoSetProxy");
+        isCharlesProxy = bundle.getBoolean("isCharlesProxy");
         isBypassApps = bundle.getBoolean("isBypassApps");
         isAuth = bundle.getBoolean("isAuth");
         isNTLM = bundle.getBoolean("isNTLM");

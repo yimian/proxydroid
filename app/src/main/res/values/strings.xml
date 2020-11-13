@@ -188,5 +188,7 @@
     <!-- Connection errors -->
     <string name="msg_pac_error">Incorrect or unsupported PAC file</string>
     <string name="msg_resolve_error">Incorrect or unknown proxy host name</string>
+    <string name="is_charles">Is Charles-like Proxy</string>
+    <string name="is_charles_summary">whether to use Charles-like Proxy</string>
 
 </resources>

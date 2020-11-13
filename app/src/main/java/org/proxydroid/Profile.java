@@ -45,6 +45,7 @@ public class Profile implements Serializable {
         private String certificate;
 	private String proxyedApps;
 	private boolean isAutoConnect = false;
+	private boolean isCharlesProxy = false;
 	private boolean isAutoSetProxy = false;
 	private boolean isBypassApps = false;
 	private boolean isAuth = false;
@@ -81,6 +82,7 @@ public class Profile implements Serializable {
 		isDNSProxy = settings.getBoolean("isDNSProxy", false);
 		isPAC = settings.getBoolean("isPAC", false);
 		isAutoConnect = settings.getBoolean("isAutoConnect", false);
+		isCharlesProxy = settings.getBoolean("isCharlesProxy", false);
 
 		String portText = settings.getString("port", "");
 
@@ -110,6 +112,7 @@ public class Profile implements Serializable {
 		ed.putString("proxyType", proxyType);
                 ed.putString("certificate", certificate);
 		ed.putBoolean("isAutoConnect", isAutoConnect);
+		ed.putBoolean("isCharlesProxy", isCharlesProxy);
 		ed.putBoolean("isAutoSetProxy", isAutoSetProxy);
 		ed.putBoolean("isBypassApps", isBypassApps);
 		ed.putBoolean("isPAC", isPAC);
@@ -130,6 +133,7 @@ public class Profile implements Serializable {
 		isAuth = false;
 		proxyType = "http";
 		isAutoConnect = false;
+		isCharlesProxy = false;
 		ssid = "";
 		excludedSsid = "";
 		isNTLM = false;
@@ -162,6 +166,7 @@ public class Profile implements Serializable {
 		obj.put("isAuth", isAuth);
 		obj.put("isNTLM", isNTLM);
 		obj.put("isAutoConnect", isAutoConnect);
+		obj.put("isCharlesProxy", isCharlesProxy);
 		obj.put("isAutoSetProxy", isAutoSetProxy);
 		obj.put("isBypassApps", isBypassApps);
 		obj.put("isDNSProxy", isDNSProxy);
@@ -235,6 +240,7 @@ public class Profile implements Serializable {
 		isAuth = jd.getBoolean("isAuth", false);
 		isNTLM = jd.getBoolean("isNTLM", false);
 		isAutoConnect = jd.getBoolean("isAutoConnect", false);
+		isCharlesProxy = jd.getBoolean("isCharlesProxy", false);
 		isAutoSetProxy = jd.getBoolean("isAutoSetProxy", false);
 		isBypassApps = jd.getBoolean("isBypassApps", false);
 		isDNSProxy = jd.getBoolean("isDNSProxy", false);
@@ -461,11 +467,26 @@ public class Profile implements Serializable {
 	}
 
 	/**
+	 * @return the isCharlesProxy
+	 */
+	public Boolean isCharlesProxy() {
+		return isCharlesProxy;
+	}
+
+	/**
 	 * @param isAutoConnect
 	 *            the isAutoConnect to set
 	 */
 	public void setAutoConnect(Boolean isAutoConnect) {
 		this.isAutoConnect = isAutoConnect;
+	}
+
+	/**
+	 * @param isCharlesProxy
+	 *            the isAutoConnect to set
+	 */
+	public void setCharlesProxy(Boolean isCharlesProxy) {
+		this.isCharlesProxy= isCharlesProxy;
 	}
 
 	/**
