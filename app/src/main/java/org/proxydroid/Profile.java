@@ -65,7 +65,7 @@ public class Profile implements Serializable {
 		name = settings.getString("profileName", "");
 
 		host = settings.getString("host", "");
-		proxyType = settings.getString("proxyType", "http");
+		proxyType = settings.getString("proxyType", "socks4");
 		user = settings.getString("user", "");
 		password = settings.getString("password", "");
 		ssid = settings.getString("ssid", "");
@@ -129,7 +129,7 @@ public class Profile implements Serializable {
 		password = "";
                 certificate = "";
 		isAuth = false;
-		proxyType = "http";
+		proxyType = "socks4";
 		isAutoConnect = false;
 		ssid = "";
 		excludedSsid = "";
@@ -223,7 +223,7 @@ public class Profile implements Serializable {
 		ssid = jd.getString("ssid", "");
 		excludedSsid = jd.getString("excludedSsid", "");
 		host = jd.getString("host", "");
-		proxyType = jd.getString("proxyType", "http");
+		proxyType = jd.getString("proxyType", "socks4");
 		user = jd.getString("user", "");
 		password = jd.getString("password", "");
 		domain = jd.getString("domain", "");

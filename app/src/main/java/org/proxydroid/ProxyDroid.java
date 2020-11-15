@@ -318,25 +318,6 @@ public class ProxyDroid extends PreferenceActivity
         ((ProxyDroidApplication)getApplication())
                 .firebaseAnalytics.setCurrentScreen(this, "home_screen", null);
 
-        // Create the adView
-        adView = new AdView(this);
-        adView.setAdUnitId("ca-app-pub-9097031975646651/4806879927");
-        adView.setAdSize(AdSize.SMART_BANNER);
-        // Lookup your LinearLayout assuming it’s been given
-        // the attribute android:id="@+id/mainLayout"
-        ViewParent parent = getListView().getParent();
-        LinearLayout layout = getLayout(parent);
-
-        // disable adds
-        if (layout != null) {
-            // Add the adView to it
-            layout.addView(adView, 0);
-            adView.loadAd(new AdRequest.Builder()
-                    .addTestDevice("F58907F28184A828DD0DB6F8E38189C6")
-                    .addTestDevice("236666026C17FEFB1B547C4A3B2322CD")
-                    .build());
-        }
-
         hostText = (EditTextPreference) findPreference("host");
         portText = (EditTextPreference) findPreference("port");
         userText = (EditTextPreference) findPreference("user");

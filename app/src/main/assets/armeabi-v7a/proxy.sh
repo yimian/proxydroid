@@ -136,12 +136,10 @@ redsocks {
  iptables -A INPUT -i lo -p tcp --dport 8124 -j ACCEPT
  iptables -A INPUT -p tcp --dport 8123 -j DROP
  iptables -A INPUT -p tcp --dport 8124 -j DROP
- iptables -t nat -A PREROUTING -i wlan+ -p tcp -d 192.168.43.1/24 -j RETURN
  iptables -t nat -A PREROUTING -i wlan+ -p tcp -j REDIRECT --to $proxy_port
  ;;
 stop)
 
- iptables -t nat -D PREROUTING -i wlan+ -p tcp -d 192.168.43.1/24 -j RETURN
  iptables -t nat -D PREROUTING -i wlan+ -p tcp -j REDIRECT --to 8123
  iptables -t nat -D PREROUTING -i wlan+ -p tcp -j REDIRECT --to 8124
  iptables -D INPUT -i wlan+ -p tcp --dport 8123 -j ACCEPT

@@ -34,7 +34,7 @@
     </EditTextPreference>
 
     <ListPreference
-        android:defaultValue="http"
+        android:defaultValue="socks4"
         android:entries="@array/proxy_type_entry"
         android:entryValues="@array/proxy_type_value"
         android:key="proxyType"
