@@ -135,7 +135,6 @@ public class ProxyDroidService extends Service {
 
     private boolean hasRedirectSupport = true;
     private boolean isAutoSetProxy = false;
-    private boolean isCharlesProxy = false;
     private boolean isBypassApps = false;
 
     private ProxyedApp[] apps;
@@ -181,7 +180,7 @@ public class ProxyDroidService extends Service {
         int proxyPort = port;
 
         try {
-            if ("https".equals(proxyType) && !isCharlesProxy) {
+            if ("https".equals(proxyType)) {
                 String src = "-L=http://127.0.0.1:8126";
                 String auth = "";
                 if (!user.isEmpty() && !password.isEmpty()) {
@@ -207,9 +206,6 @@ public class ProxyDroidService extends Service {
                 final String u = Utils.preserve(user);
                 final String p = Utils.preserve(password);
 
-                if(isCharlesProxy) {
-                    proxyType = "http";  // proxy.sh use http logic to generate redsocks.conf
-                }
                 Utils.runRootCommand(basePath + "proxy.sh " + basePath + " start" + " " + proxyType + " " + proxyHost
                         + " " + proxyPort + " " + auth + " \"" + u + "\" \"" + p + "\"");
             }
@@ -567,7 +563,6 @@ public class ProxyDroidService extends Service {
         proxyType = bundle.getString("proxyType");
         port = bundle.getInt("port");
         isAutoSetProxy = bundle.getBoolean("isAutoSetProxy");
-        isCharlesProxy = bundle.getBoolean("isCharlesProxy");
         isBypassApps = bundle.getBoolean("isBypassApps");
         isAuth = bundle.getBoolean("isAuth");
         isNTLM = bundle.getBoolean("isNTLM");

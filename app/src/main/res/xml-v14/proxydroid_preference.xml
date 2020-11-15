@@ -42,12 +42,6 @@
     </ListPreference>
 
     <CheckBoxPreference
-        android:key="isCharlesProxy"
-        android:summary="@string/is_charles_summary"
-        android:title="@string/is_charles">
-    </CheckBoxPreference>
-
-    <CheckBoxPreference
         android:key="isAutoConnect"
         android:summary="@string/auto_connect_summary"
         android:title="@string/auto_connect">
