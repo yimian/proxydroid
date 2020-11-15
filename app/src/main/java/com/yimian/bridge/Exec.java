@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import java.io.FileDescriptor;
 

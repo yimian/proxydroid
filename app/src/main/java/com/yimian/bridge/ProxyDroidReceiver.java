@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

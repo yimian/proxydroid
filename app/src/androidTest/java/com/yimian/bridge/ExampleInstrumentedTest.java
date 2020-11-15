@@ -1,4 +1,4 @@
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("org.proxydroid", appContext.getPackageName());
+        assertEquals("com.yimian.bridge", appContext.getPackageName());
     }
 }

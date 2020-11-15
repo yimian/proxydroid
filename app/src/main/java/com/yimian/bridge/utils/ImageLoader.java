@@ -1,4 +1,4 @@
-package org.proxydroid.utils;
+package com.yimian.bridge.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
 
-import org.proxydroid.R;
+import com.yimian.bridge.R;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package org.proxydroid;
+package com.yimian.bridge;
 
 
 public class ProxyedApp {

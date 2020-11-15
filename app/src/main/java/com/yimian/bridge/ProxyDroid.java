@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -79,14 +79,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.ksmaze.android.preference.ListPreferenceMultiSelect;
 
-import org.proxydroid.utils.Constraints;
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Constraints;
+import com.yimian.bridge.utils.Utils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -138,7 +134,6 @@ public class ProxyDroid extends PreferenceActivity
     private CheckBoxPreference isBypassAppsCheck;
     private Preference proxyedApps;
     private Preference bypassAddrs;
-    private AdView adView;
     private BroadcastReceiver ssidReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -315,9 +310,6 @@ public class ProxyDroid extends PreferenceActivity
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.proxydroid_preference);
 
-        ((ProxyDroidApplication)getApplication())
-                .firebaseAnalytics.setCurrentScreen(this, "home_screen", null);
-
         hostText = (EditTextPreference) findPreference("host");
         portText = (EditTextPreference) findPreference("port");
         userText = (EditTextPreference) findPreference("user");
@@ -410,8 +402,6 @@ public class ProxyDroid extends PreferenceActivity
      */
     @Override
     public void onDestroy() {
-
-        if (adView != null) adView.destroy();
 
         if (ssidReceiver != null) unregisterReceiver(ssidReceiver);
 

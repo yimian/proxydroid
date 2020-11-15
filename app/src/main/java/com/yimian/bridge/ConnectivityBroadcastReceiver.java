@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -52,8 +52,8 @@ import android.preference.PreferenceManager;
 
 import com.ksmaze.android.preference.ListPreferenceMultiSelect;
 
-import org.proxydroid.utils.Constraints;
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Constraints;
+import com.yimian.bridge.utils.Utils;
 
 public class ConnectivityBroadcastReceiver extends BroadcastReceiver {
 

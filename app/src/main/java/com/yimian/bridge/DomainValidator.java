@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.proxydroid;
+package com.yimian.bridge;
 
-import org.proxydroid.utils.RegexValidator;
+import com.yimian.bridge.utils.RegexValidator;
 
 import java.io.Serializable;
 import java.util.Arrays;

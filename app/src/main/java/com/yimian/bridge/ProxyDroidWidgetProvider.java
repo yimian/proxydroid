@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -50,12 +50,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Utils;
 
 public class ProxyDroidWidgetProvider extends AppWidgetProvider {
 
-	public static final String PROXY_SWITCH_ACTION = "org.proxydroid.ProxyDroidWidgetProvider.PROXY_SWITCH_ACTION";
-	public static final String SERVICE_NAME = "org.proxydroid.ProxyDroidService";
+	public static final String PROXY_SWITCH_ACTION = "com.yimian.bridge.ProxyDroidWidgetProvider.PROXY_SWITCH_ACTION";
+	public static final String SERVICE_NAME = "com.yimian.bridge.ProxyDroidService";
 	public static final String TAG = "ProxyDroidWidgetProvider";
 
 	@Override

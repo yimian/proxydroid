@@ -1,4 +1,4 @@
-package org.proxydroid.utils;
+package com.yimian.bridge.utils;
 
 public class Constraints {
 

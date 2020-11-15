@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -65,8 +65,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.proxydroid.utils.Constraints;
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Constraints;
+import com.yimian.bridge.utils.Utils;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

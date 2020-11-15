@@ -1,7 +1,7 @@
 /* Copyright (c) 2009, Nathan Freitas, Orbot / The Guardian Project - http://openideals.com/guardian */
 /* See LICENSE for licensing information */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -35,8 +35,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.proxydroid.utils.ImageLoader;
-import org.proxydroid.utils.ImageLoaderFactory;
+import com.yimian.bridge.utils.ImageLoader;
+import com.yimian.bridge.utils.ImageLoaderFactory;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -48,7 +48,7 @@ import java.util.Vector;
 public class AppManager extends AppCompatActivity implements OnCheckedChangeListener,
 		OnClickListener {
 
-	private ProxyedApp[] apps = null;
+	private com.yimian.bridge.ProxyedApp[] apps = null;
 
 	private ListView listApps;
 
@@ -138,9 +138,6 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		((ProxyDroidApplication)getApplication())
-				.firebaseAnalytics.setCurrentScreen(this, "app_manager", null);
-		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		this.setContentView(R.layout.layout_apps);
@@ -195,9 +192,9 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 	private void loadApps() {
 		getApps(this);
 
-		Arrays.sort(apps, new Comparator<ProxyedApp>() {
+		Arrays.sort(apps, new Comparator<com.yimian.bridge.ProxyedApp>() {
 			@Override
-			public int compare(ProxyedApp o1, ProxyedApp o2) {
+			public int compare(com.yimian.bridge.ProxyedApp o1, com.yimian.bridge.ProxyedApp o2) {
 				if (o1 == null || o2 == null || o1.getName() == null
 						|| o2.getName() == null)
 					return 1;
@@ -211,7 +208,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 		final LayoutInflater inflater = getLayoutInflater();
 
-		adapter = new ArrayAdapter<ProxyedApp>(this, R.layout.layout_apps_item,
+		adapter = new ArrayAdapter<com.yimian.bridge.ProxyedApp>(this, R.layout.layout_apps_item,
 				R.id.itemtext, apps) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
@@ -238,7 +235,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 					entry = (ListEntry) convertView.getTag();
 				}
 
-				final ProxyedApp app = apps[position];
+				final com.yimian.bridge.ProxyedApp app = apps[position];
 
 				entry.icon.setTag(app.getUid());
 
@@ -279,7 +276,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 		// Log.d(getClass().getName(),"Exiting Preferences");
 	}
 
-	public static ProxyedApp[] getProxyedApps(Context context, boolean self) {
+	public static com.yimian.bridge.ProxyedApp[] getProxyedApps(Context context, boolean self) {
 
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
@@ -303,7 +300,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 		Iterator<ApplicationInfo> itAppInfo = lAppInfo.iterator();
 
-		Vector<ProxyedApp> vectorApps = new Vector<ProxyedApp>();
+		Vector<com.yimian.bridge.ProxyedApp> vectorApps = new Vector<com.yimian.bridge.ProxyedApp>();
 
 		ApplicationInfo aInfo = null;
 
@@ -316,7 +313,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 			if (aInfo.uid < 10000)
 				continue;
 
-			ProxyedApp app = new ProxyedApp();
+			com.yimian.bridge.ProxyedApp app = new com.yimian.bridge.ProxyedApp();
 
 			app.setUid(aInfo.uid);
 
@@ -324,7 +321,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 			// check if this application is allowed
 			if (aInfo.packageName != null
-					&& aInfo.packageName.equals("org.proxydroid")) {
+					&& aInfo.packageName.equals("com.yimian.bridge")) {
 				if (self)
 					app.setProxyed(true);
 			} else if (Arrays.binarySearch(tordApps, app.getUsername()) >= 0) {
@@ -338,7 +335,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 		}
 
-		ProxyedApp[] apps = new ProxyedApp[vectorApps.size()];
+		com.yimian.bridge.ProxyedApp[] apps = new com.yimian.bridge.ProxyedApp[vectorApps.size()];
 		vectorApps.toArray(apps);
 		return apps;
 	}
@@ -360,7 +357,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 		Arrays.sort(tordApps);
 
-		Vector<ProxyedApp> vectorApps = new Vector<ProxyedApp>();
+		Vector<com.yimian.bridge.ProxyedApp> vectorApps = new Vector<com.yimian.bridge.ProxyedApp>();
 
 		// else load the apps up
 		PackageManager pMgr = context.getPackageManager();
@@ -386,7 +383,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 			if (pMgr.getApplicationIcon(aInfo) == null)
 				continue;
 
-			ProxyedApp tApp = new ProxyedApp();
+			com.yimian.bridge.ProxyedApp tApp = new com.yimian.bridge.ProxyedApp();
 
 			tApp.setEnabled(aInfo.enabled);
 			tApp.setUid(aInfo.uid);
@@ -404,7 +401,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 			vectorApps.add(tApp);
 		}
 
-		apps = new ProxyedApp[vectorApps.size()];
+		apps = new com.yimian.bridge.ProxyedApp[vectorApps.size()];
 		vectorApps.toArray(apps);
 
 	}
@@ -439,7 +436,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 	 */
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		final ProxyedApp app = (ProxyedApp) buttonView.getTag();
+		final com.yimian.bridge.ProxyedApp app = (com.yimian.bridge.ProxyedApp) buttonView.getTag();
 		if (app != null) {
 			app.setProxyed(isChecked);
 		}
@@ -453,7 +450,7 @@ public class AppManager extends AppCompatActivity implements OnCheckedChangeList
 
 		CheckBox cbox = (CheckBox) v.getTag();
 
-		final ProxyedApp app = (ProxyedApp) cbox.getTag();
+		final com.yimian.bridge.ProxyedApp app = (com.yimian.bridge.ProxyedApp) cbox.getTag();
 		if (app != null) {
 			app.setProxyed(!app.isProxyed());
 			cbox.setChecked(app.isProxyed());

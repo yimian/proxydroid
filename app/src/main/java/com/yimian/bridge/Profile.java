@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;

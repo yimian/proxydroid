@@ -337,7 +337,7 @@ static int register_FileDescriptor(JNIEnv *env)
 }
 
 
-static const char *classPathName = "org/proxydroid/Exec";
+static const char *classPathName = "com/yimian/bridge/Exec";
 
 static JNINativeMethod method_table[] = {
     { "createSubprocess", "(ILjava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[I)Ljava/io/FileDescriptor;",

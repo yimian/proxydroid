@@ -36,20 +36,15 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.Application;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
-
 public class ProxyDroidApplication extends Application {
-
-    public FirebaseAnalytics firebaseAnalytics;
 
     @Override
     public void onCreate() {
         // Obtain the FirebaseAnalytics instance.
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         super.onCreate();
     }
 }

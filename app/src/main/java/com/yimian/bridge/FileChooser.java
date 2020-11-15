@@ -1,4 +1,4 @@
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.proxydroid.utils.Constraints;
-import org.proxydroid.utils.Option;
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Constraints;
+import com.yimian.bridge.utils.Option;
+import com.yimian.bridge.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -55,8 +55,6 @@ public class FileChooser extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		((ProxyDroidApplication)getApplication())
-				.firebaseAnalytics.setCurrentScreen(this, "file_chooser", null);
 		currentDir = new File(Utils.getDataPath(this));
 		fill(currentDir);
 	}

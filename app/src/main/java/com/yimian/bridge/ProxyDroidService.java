@@ -36,7 +36,7 @@
  *
  */
 
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -67,7 +67,7 @@ import com.btr.proxy.selector.pac.PacScriptSource;
 import com.btr.proxy.selector.pac.Proxy;
 import com.btr.proxy.selector.pac.UrlPacScriptSource;
 
-import org.proxydroid.utils.Utils;
+import com.yimian.bridge.utils.Utils;
 
 import java.lang.ref.WeakReference;
 import java.net.InetAddress;
@@ -129,7 +129,7 @@ public class ProxyDroidService extends Service {
     private boolean isNTLM = false;
     private boolean isPAC = false;
 
-    public String basePath = "/data/data/org.proxydroid/";
+    public String basePath = "/data/data/com.yimian.bridge/";
 
     private SharedPreferences settings = null;
 
@@ -366,9 +366,6 @@ public class ProxyDroidService extends Service {
     @Override
     public void onDestroy() {
 
-        ((ProxyDroidApplication)getApplication())
-                .firebaseAnalytics.logEvent("service_stop", null);
-
         Utils.setConnecting(true);
 
         notificationManager.cancelAll();
@@ -551,9 +548,6 @@ public class ProxyDroidService extends Service {
         if (intent == null || intent.getExtras() == null) {
             return;
         }
-
-        ((ProxyDroidApplication)getApplication())
-                .firebaseAnalytics.logEvent("service_start", null);
 
         Log.d(TAG, "Service Start");
 

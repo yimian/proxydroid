@@ -1,4 +1,4 @@
-package org.proxydroid.utils;
+package com.yimian.bridge.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -9,9 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Log;
 
-import org.proxydroid.Exec;
-import org.proxydroid.ProxyDroidService;
-import org.proxydroid.R;
+import com.yimian.bridge.Exec;
+import com.yimian.bridge.ProxyDroidService;
+import com.yimian.bridge.R;
 
 import java.io.File;
 import java.io.FileDescriptor;

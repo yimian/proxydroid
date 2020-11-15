@@ -2,7 +2,7 @@
 <resources>
 
     <!-- app string -->
-    <string name="app_name">ProxyDroid</string>
+    <string name="app_name">YiMian Bridge</string>
     <string name="ok_iknow">OK, Je sais</string>
     <string name="feedback">Commentaire @ofmax</string>
 

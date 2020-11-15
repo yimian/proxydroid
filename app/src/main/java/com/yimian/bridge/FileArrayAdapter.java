@@ -1,4 +1,4 @@
-package org.proxydroid;
+package com.yimian.bridge;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.proxydroid.utils.Option;
+import com.yimian.bridge.utils.Option;
 
 import java.util.List;
 
